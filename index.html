@@ -1,0 +1,614 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shahriar Sohag — Motion & Creative Direction Portfolio</title>
+    <meta name="description" content="Personal portfolio of Shahriar Sohag. Exploring ideas through daily design practice, 3D motion systems, and interactive digital craftsmanship." />
+    <meta property="og:title" content="Shahriar Sohag — Motion & Creative Direction Portfolio" />
+    <meta property="og:description" content="Personal portfolio of Shahriar Sohag. Exploring ideas through daily design practice, 3D motion systems, and interactive digital craftsmanship." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;500;600;800;900&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js"
+        }
+      }
+    </script>
+    <style>
+:root{--bg:#0a0a0b;--ink:#f4f1ea;--mid:#8d8b86;--line:rgba(244,241,234,.14);--font-serif:'Instrument Serif','Cormorant Garamond',Georgia,serif;--font-display:'Anton','Syne','Inter Tight',sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:var(--bg)}
+body{font-family:'Inter Tight',system-ui,sans-serif;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+#track{height:900vh}
+.stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:var(--bg)}
+.hl{font-family:var(--font-serif);position:absolute;left:0;right:0;font-weight:400;font-size:clamp(48px,11.5vw,215px);line-height:.84;letter-spacing:.035em;text-transform:uppercase;white-space:nowrap;text-align:center;will-change:transform,filter;color:var(--ink);text-shadow:none}
+#l1{top:calc(50% - .92em);cursor:pointer}
+#l2{top:calc(50% + .04em);cursor:pointer}
+#l1 > span,#l2 > span{display:inline-block;max-width:95vw}
+#l1 > span{margin-right:0}
+#l2 > span{margin-left:0}
+.char{display:inline-block;will-change:transform,filter,opacity;backface-visibility:hidden}
+#gl{position:absolute;inset:0;width:100%;height:100%;display:block}
+.top{position:absolute;left:36px;right:36px;top:24px;display:flex;align-items:center;justify-content:space-between;pointer-events:none;z-index:20}
+.logo{display:flex;align-items:center;gap:10px;font-family:var(--font-serif);font-size:24px;font-weight:400;letter-spacing:.06em;pointer-events:auto;color:var(--ink)}
+.logo svg{width:22px;height:18px;fill:var(--ink)}
+.top-nav{position:absolute;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:4px;background:rgba(20,20,22,.65);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);padding:4px 6px;border-radius:99px;border:1px solid var(--line);pointer-events:auto}
+.top-nav a{padding:6px 14px;font-size:12px;font-weight:500;color:var(--mid);text-decoration:none;border-radius:99px;transition:all .2s;letter-spacing:.02em}
+.top-nav a:hover{color:var(--ink)}
+.top-nav a.active{background:var(--ink);color:var(--bg);font-weight:600}
+.acts{display:flex;align-items:center;gap:10px;pointer-events:auto}
+.acts a{display:flex;align-items:center;gap:8px;height:36px;padding:0 18px;background:rgba(244,241,234,.08);border:1px solid rgba(244,241,234,.25);border-radius:99px;color:var(--ink);text-decoration:none;font-size:12.5px;font-weight:500;letter-spacing:.04em;transition:all .2s}
+.acts a:hover{background:var(--ink);color:var(--bg)}
+.acts a svg{width:13px;height:13px}
+.cta-dot{width:6px;height:6px;border-radius:50%;background:#4ade80;box-shadow:0 0 8px #4ade80;display:inline-block;animation:pulse 2s cubic-bezier(0.4,0,0.6,1) infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+#glow{position:absolute;left:0;right:0;top:0;height:42%;background:linear-gradient(rgba(244,241,234,.1),rgba(244,241,234,0))}
+.bot{position:absolute;left:36px;right:36px;bottom:28px;display:flex;align-items:flex-end;justify-content:space-between;pointer-events:none;z-index:20}
+.bot-left{display:flex;flex-direction:column;gap:8px;pointer-events:auto}
+.bot-left h2{font-size:clamp(20px,2.2vw,30px);font-weight:400;letter-spacing:.02em;color:var(--ink);line-height:1.15;font-family:var(--font-serif);text-transform:none}
+.bot-left .badge{font:400 11px 'IBM Plex Mono',monospace;letter-spacing:.1em;color:var(--mid);text-transform:none}
+.bot-card{background:rgba(20,20,22,.75);border:1px solid rgba(244,241,234,.18);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-radius:20px;padding:16px 20px;min-width:170px;display:flex;flex-direction:column;gap:8px;pointer-events:auto;transition:transform .2s,border-color .2s}
+.bot-card:hover{transform:translateY(-2px);border-color:rgba(244,241,234,.35)}
+.bot-card-top{display:flex;align-items:center;justify-content:space-between;gap:16px;font-size:12px;font-weight:500;color:var(--mid)}
+.bot-card-top .arrow-circle{width:22px;height:22px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;font-size:11px;color:var(--ink)}
+.bot-card-metric{font-size:38px;font-weight:300;line-height:1;letter-spacing:-.03em;color:var(--ink);font-family:var(--font-serif)}
+.bot-card-sub{font:400 11px 'IBM Plex Mono',monospace;color:var(--mid);letter-spacing:.04em;margin-top:-2px}
+#name{position:absolute;left:0;top:0;padding:7px 14px;background:rgba(20,20,22,.92);color:var(--ink);border:1px solid rgba(244,241,234,.25);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-radius:99px;font-size:12px;font-weight:500;font-family:var(--font-serif);letter-spacing:.04em;pointer-events:none;opacity:0;transition:opacity .16s;white-space:nowrap;box-shadow:0 8px 30px rgba(0,0,0,.6)}
+.center-hero{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:flex;align-items:center;justify-content:center;z-index:9;pointer-events:none;will-change:transform,opacity,filter;transition:opacity .2s ease-out}
+.dark-portrait-wrap{position:relative;width:clamp(280px,36vw,480px);aspect-ratio:3/4;display:flex;align-items:center;justify-content:center}
+.dark-portrait-img{width:100%;height:100%;object-fit:contain;display:block;mask-image:radial-gradient(ellipse 92% 90% at 50% 50%,black 70%,rgba(0,0,0,.7) 85%,transparent 100%);-webkit-mask-image:radial-gradient(ellipse 92% 90% at 50% 50%,black 70%,rgba(0,0,0,.7) 85%,transparent 100%)}
+.portrait-vignette-overlay{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 95% 95% at 50% 50%,transparent 68%,#0a0a0b 98%)}
+.portrait-tag-from{position:absolute;top:8px;right:12px;font:400 11px 'IBM Plex Mono',monospace;letter-spacing:.16em;color:rgba(244,241,234,.35);z-index:2}
+.portrait-tag-year{position:absolute;bottom:12px;left:50%;transform:translateX(-50%);font:500 18px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:var(--ink);z-index:2;text-shadow:0 2px 10px rgba(0,0,0,.8)}
+
+.carousel-tags{position:absolute;inset:0;pointer-events:none;z-index:15;overflow:hidden}
+.caro-tag{position:absolute;transform:translate(-50%,-50%);display:flex;align-items:center;gap:8px;background:rgba(18,18,20,.88);border:1px solid rgba(244,241,234,.22);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-radius:99px;padding:7px 16px 7px 18px;font:500 12.5px var(--font-serif);color:var(--ink);letter-spacing:.04em;pointer-events:auto;cursor:pointer;transition:transform .2s,border-color .2s,background .2s;box-shadow:0 8px 24px rgba(0,0,0,.6);opacity:0;white-space:nowrap}
+.caro-tag:hover{transform:translate(-50%,-50%) scale(1.06);border-color:rgba(244,241,234,.45);background:rgba(244,241,234,.16)}
+.caro-tag .tag-arrow{font-size:11px;color:var(--mid);transition:transform .2s}
+.caro-tag:hover .tag-arrow{color:var(--ink);transform:translate(2px,-2px)}
+
+.sig-logo-img{height:clamp(56px,5.8vw,78px);width:auto;display:inline-block;filter:drop-shadow(0 2px 16px rgba(244,241,234,.2));vertical-align:middle;transition:transform .2s ease-out}
+.sig-logo-img:hover{transform:scale(1.05)}
+
+@media (max-width:760px){
+  .top{left:18px;right:18px;top:18px}.top-nav{display:none}
+  .bot{left:18px;right:18px;bottom:18px;flex-direction:column;gap:14px;align-items:flex-start}
+  .bot-card{width:100%;min-width:unset}
+  .center-scroll-hint{display:none}
+}
+    </style>
+  </head>
+  <body>
+    <div id="track">
+      <main class="stage" id="stage">
+        <h1 aria-label="Shahriar's Creation">
+          <div class="hl" id="l1" aria-hidden="true"><span id="l1-inner">SHAHRIAR'S</span></div>
+          <div class="hl" id="l2" aria-hidden="true"><span id="l2-inner">CREATION</span></div>
+        </h1>
+        <div class="center-hero" id="center-hero">
+          <div class="dark-portrait-wrap">
+            <div class="portrait-tag-from">FROM</div>
+            <img 
+              src="/assets/shahriar-dark-portrait.jpg" 
+              alt="Shahriar Sohag" 
+              class="dark-portrait-img" 
+            />
+            <div class="portrait-vignette-overlay"></div>
+            <div class="portrait-tag-year">93'</div>
+          </div>
+        </div>
+
+        <div id="carousel-tags" class="carousel-tags"></div>
+
+        <div id="glow"></div>
+        <canvas id="gl"></canvas>
+        <header class="top">
+          <a href="#" class="logo" aria-label="Shahriar Sohag">
+            <img src="/assets/shahriar-signature.svg" alt="Shahriar signature" class="sig-logo-img" />
+          </a>
+          <nav class="top-nav">
+            <a href="#works" class="active">Selected Works</a>
+            <a href="#about">About</a>
+            <a href="#direction">Direction</a>
+            <a href="#archive">Archive</a>
+            <a href="#contact">Contact</a>
+          </nav>
+          <div class="acts">
+            <a href="mailto:shahriarsohag2@gmail.com" title="Get in touch">
+              <span class="cta-dot"></span>
+              Available Q2 '26
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
+            </a>
+          </div>
+        </header>
+        <footer class="bot">
+          <div class="bot-left">
+            <h2>Exploring ideas through<br/>daily design practice</h2>
+            <div class="badge">Motion designer & creative technologist // 2026</div>
+          </div>
+          <div class="bot-card">
+            <div class="bot-card-top">
+              <span>Selected Works</span>
+              <div class="arrow-circle">↗</div>
+            </div>
+            <div class="bot-card-metric" id="bot-metric">08</div>
+            <div class="bot-card-sub" id="bot-sub">Interactive 3D Portfolio</div>
+          </div>
+        </footer>
+        <div id="name"></div>
+      </main>
+    </div>
+    <script type="module">
+import * as THREE from 'three';
+
+const R2 = 'https://pub-86dc5b5484314368ac5436a674b0d919.r2.dev/';
+const WORK = [
+  ['Nexora — Spatial Interface', '/videos/nexora.mp4'],
+  ['Arcee — Autonomous Systems', '/videos/arcee.mp4'],
+  ['Lampyra — Liquid Asset Engine', '/videos/lampyra.mp4'],
+  ['MiniMax — Generative Swarm', '/videos/minimax.mp4'],
+  ['Kiln — Artisanal Roastery Brand', '/videos/kiln.mp4'],
+  ['Beam — Quantum Cloud Protocol', '/videos/beam.mp4'],
+  ['Equal AI — Voice Agent Platform', '/videos/equal.mp4'],
+  ['MiniMax — Agent Intelligence Suite', '/videos/minimax-ecosystem.mp4'],
+];
+const $ = id => document.getElementById(id);
+const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const mix = (a, b, t) => a + (b - a) * t;
+const ease = t => t * t * (3 - 2 * t);
+const out = t => 1 - (1 - t) ** 3;
+const span = (p, a, b) => clamp((p - a) / (b - a));
+
+/* ---------- renderer ---------- */
+const canvas = $('gl');
+const renderer = new THREE.WebGLRenderer({canvas, antialias:true, alpha:true});
+renderer.setClearColor(0, 0);
+renderer.outputColorSpace = THREE.LinearSRGBColorSpace;
+const scene = new THREE.Scene();
+const FOV = 35, camera = new THREE.PerspectiveCamera(FOV, 1, .1, 100);
+
+/* ---------- ribbon path ---------- */
+let path, PATH_L = 1;
+const SAMPLES = 1200, pathP = [], pathT = [];
+const PH0 = -1.5, PH1 = Math.PI * 2 + 1.35;
+function buildPath() {
+  const pts = [];
+  for (let i = 0; i <= 160; i++) {
+    const t = i / 160, ph = mix(PH0, PH1, t), cs = Math.cos(ph), u = 2 * t - 1;
+    // a shallow arc close to the camera, then long runs far behind it
+    const depth = cs > 0 ? 7.6 + 16.4 * cs ** .9 : 7.6 + 2.2 * cs;
+    const edge = .84 + .5 * span(.14 - t, 0, .14) + .8 * span(t, .84, 1);
+    pts.push(new THREE.Vector3(edge * Math.sin(ph) * depth * .561, .5 * Math.sign(u) * Math.abs(u) ** 1.4 * depth * .63, -depth));
+  }
+  path = new THREE.CatmullRomCurve3(pts, false, 'centripetal');
+  path.arcLengthDivisions = 1500;
+  PATH_L = path.getLength(); pathP.length = pathT.length = 0;
+  for (let i = 0; i <= SAMPLES; i++) { const u = i / SAMPLES; pathP.push(path.getPointAt(u)); pathT.push(path.getTangentAt(u)); }
+}
+const at = (s, op, ot) => {
+  const f = clamp(s / PATH_L) * SAMPLES, i = Math.min(SAMPLES - 1, Math.floor(f)), k = f - i;
+  op.lerpVectors(pathP[i], pathP[i + 1], k); ot.lerpVectors(pathT[i], pathT[i + 1], k).normalize();
+};
+
+/* ---------- cards ---------- */
+const CARD_W = 2.1, CARD_H = 1.32, GAP = .03, STEP = CARD_W + GAP, NX = 28, NY = 3;
+const vs = `varying vec2 vUv;void main(){vUv=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}`;
+const fs = `uniform sampler2D map;uniform vec2 cover;uniform float aspect,ready,radius;varying vec2 vUv;
+void main(){
+  vec2 q=(abs(vUv-.5)-.5)*vec2(aspect,1.)+radius;
+  float d=length(max(q,0.))+min(max(q.x,q.y),0.)-radius;
+  float px=fwidth(d),a=1.-smoothstep(-px,px,d);
+  if(a<.01)discard;
+  vec2 uv=vUv;if(!gl_FrontFacing)uv.x=1.-uv.x;
+  vec3 c=mix(vec3(.075),texture2D(map,(uv-.5)*cover+.5).rgb,ready);
+  float edge=smoothstep(-.012-px,-.012,d);
+  gl_FragColor=vec4(mix(c,vec3(1.),edge*.1),a);
+}`;
+const cards = WORK.map(([title, src], i) => {
+  const v = document.createElement('video');
+  const videoSrc = src.startsWith('http') || src.startsWith('/') ? src : R2 + src;
+  Object.assign(v, {crossOrigin:'anonymous', muted:true, loop:true, playsInline:true, preload:'auto', src:videoSrc});
+  v.setAttribute('playsinline', '');
+  const tex = new THREE.VideoTexture(v);
+  tex.colorSpace = THREE.NoColorSpace; tex.minFilter = THREE.LinearFilter; tex.magFilter = THREE.LinearFilter; tex.generateMipmaps = false;
+  const geo = new THREE.PlaneGeometry(1, 1, NX, NY);
+  const mat = new THREE.ShaderMaterial({vertexShader:vs, fragmentShader:fs, transparent:true, side:THREE.DoubleSide,
+    uniforms:{map:{value:tex}, cover:{value:new THREE.Vector2(1, 1)}, aspect:{value:CARD_W / CARD_H}, ready:{value:0}, radius:{value:.018}}});
+  const mesh = new THREE.Mesh(geo, mat); mesh.frustumCulled = false; scene.add(mesh);
+  const c = {i, title, v, tex, geo, mat, mesh, rect:null};
+  v.addEventListener('loadeddata', () => {
+    const va = v.videoWidth / v.videoHeight, ca = CARD_W / CARD_H;
+    mat.uniforms.cover.value.set(va > ca ? ca / va : 1, va > ca ? 1 : va / ca);
+    mat.uniforms.ready.value = 1;
+  });
+  return c;
+});
+
+/* ---------- 3D Floor Grid (Video 3 Style) ---------- */
+const floorGrid = new THREE.GridHelper(52, 40, 0x55555c, 0x1f1f24);
+floorGrid.position.set(0, -2.15, -7.5);
+floorGrid.material.transparent = true;
+floorGrid.material.opacity = 0;
+scene.add(floorGrid);
+
+/* ---------- 3D Curved Cylindrical Carousel (Video 3 Style) ---------- */
+const CARO_R = 6.6;        // Radius of cylinder
+const CARO_BASE_Z = 5.25;  // Distance of closest center card to camera
+const CARO_STEP = 0.44;    // Radian spacing between cards (~25 deg)
+const CARO_Y = -0.06;      // Eye level center
+
+function poseCarousel(c, angle) {
+  const pos = c.geo.attributes.position;
+  const cardAngle = (c.i - 3.5) * CARO_STEP - angle;
+  for (let iy = 0; iy <= NY; iy++) for (let ix = 0; ix <= NX; ix++) {
+    const k = iy * (NX + 1) + ix;
+    const lu = ix / NX - 0.5;
+    const lv = 0.5 - iy / NY;
+    const dTheta = (lu * CARD_W) / CARO_R;
+    const vTheta = cardAngle + dTheta;
+    const x = CARO_R * Math.sin(vTheta);
+    const y = lv * CARD_H + CARO_Y;
+    const z = -CARO_BASE_Z - CARO_R * (1.0 - Math.cos(vTheta));
+    pos.setXYZ(k, x, y, z);
+  }
+  pos.needsUpdate = true;
+  c.caroCenter = new THREE.Vector3(
+    CARO_R * Math.sin(cardAngle),
+    CARO_Y - CARD_H * 0.5 - 0.22,
+    -CARO_BASE_Z - CARO_R * (1.0 - Math.cos(cardAngle))
+  );
+}
+
+/* ---------- Carousel Project Tags (Video 3 Style) ---------- */
+const tagsContainer = $('carousel-tags');
+const tagEls = WORK.map(([title], i) => {
+  const shortTitle = title.split(' — ')[0];
+  const tag = document.createElement('div');
+  tag.className = 'caro-tag';
+  tag.innerHTML = `<span>${shortTitle}</span><span class="tag-arrow">↗</span>`;
+  tag.addEventListener('click', () => {
+    const targetP = mix(0.58, 1.0, i / (WORK.length - 1));
+    window.scrollTo({ top: targetP * ($('track').offsetHeight - innerHeight), behavior: 'smooth' });
+  });
+  if (tagsContainer) tagsContainer.appendChild(tag);
+  return tag;
+});
+
+/* ---------- Horizontal Drag Navigation on Carousel ---------- */
+let isDragging = false;
+let lastX = 0;
+let dragVelocity = 0;
+let dragAngle = 0;
+
+window.addEventListener('pointerdown', e => {
+  if (p > 0.50 && e.clientY > 90 && e.clientY < H - 90) {
+    isDragging = true;
+    lastX = e.clientX;
+    dragVelocity = 0;
+  }
+});
+
+window.addEventListener('pointermove', e => {
+  if (isDragging && p > 0.50) {
+    const dx = e.clientX - lastX;
+    lastX = e.clientX;
+    dragVelocity = (dx / W) * 1.8;
+    dragAngle -= dragVelocity;
+  }
+});
+
+window.addEventListener('pointerup', () => { isDragging = false; });
+window.addEventListener('pointercancel', () => { isDragging = false; });
+
+/* ---------- layout ---------- */
+const GZ = 8;
+let W = 1, H = 1, asp = 1, cols = 3, rows = 2, tanH = .3153;
+function resize() {
+  W = innerWidth; H = innerHeight; asp = W / H;
+  renderer.setPixelRatio(Math.min(devicePixelRatio, 2)); renderer.setSize(W, H, false);
+  camera.aspect = asp; camera.fov = asp < 16 / 9 ? Math.atan(.561 / asp) * 360 / Math.PI : FOV; camera.updateProjectionMatrix();
+  tanH = Math.tan(camera.fov * Math.PI / 360);
+  cols = asp < .9 ? 2 : 3; rows = asp < .9 ? 3 : 2;
+}
+addEventListener('resize', resize); resize(); buildPath();
+function grid(i) {
+  const vh = 2 * GZ * tanH, vw = vh * asp, gw = vw * (cols === 3 ? .74 : .88), gap = gw * .017;
+  const cw = (gw - gap * (cols - 1)) / cols, ch = cw / (CARD_W / CARD_H), gh = ch * rows + gap * 1.6 * (rows - 1);
+  const c = i % cols, r = Math.floor(i / cols);
+  return {x:-gw / 2 + cw / 2 + c * (cw + gap), y:gh / 2 - ch / 2 - r * (ch + gap * 1.6), w:cw, h:ch, vw, vh, c, r};
+}
+
+/* ---------- scroll ---------- */
+let target = 0, p = 0, frozen = false;
+const readScroll = () => { const t = $('track'); target = clamp(scrollY / (t.offsetHeight - innerHeight)); };
+addEventListener('scroll', readScroll, {passive:true}); readScroll();
+
+/* ---------- pose ---------- */
+const op = new THREE.Vector3(), ot = new THREE.Vector3(), up = new THREE.Vector3(), Y = new THREE.Vector3(0, 1, 0), vp = new THREE.Vector3();
+function poseRibbon(c, head) {
+  const pos = c.geo.attributes.position, centre = head - c.i * STEP;
+  for (let iy = 0; iy <= NY; iy++) for (let ix = 0; ix <= NX; ix++) {
+    const k = iy * (NX + 1) + ix, lu = ix / NX - .5, lv = .5 - iy / NY;
+    at(centre + lu * CARD_W, op, ot);
+    // keep the sheet upright, leaning a little into the turn
+    up.copy(Y).addScaledVector(ot, -Y.dot(ot)).normalize();
+    vp.copy(op).addScaledVector(up, lv * CARD_H);
+    pos.setXYZ(k, vp.x, vp.y, vp.z);
+  }
+  pos.needsUpdate = true;
+}
+function poseGrid(c, q) {
+  const g = grid(c.i), pos = c.geo.attributes.position;
+  const dx = (g.c - (cols - 1) / 2) * 1.2 + (cols === 3 && g.c === 1 ? 0 : 0), dy = g.r < rows / 2 ? 1 : -1;
+  const ox = dx * g.vw * .62 * (1 - q), oy = dy * g.vh * (g.c === 1 ? .95 : .34) * (1 - q), tilt = (1 - q) * .22 * (g.c - 1 || .5) * dy;
+  const cs = Math.cos(tilt), sn = Math.sin(tilt);
+  for (let iy = 0; iy <= NY; iy++) for (let ix = 0; ix <= NX; ix++) {
+    const k = iy * (NX + 1) + ix, x = (ix / NX - .5) * g.w, y = (.5 - iy / NY) * g.h;
+    pos.setXYZ(k, g.x + ox + x * cs - y * sn, g.y + oy + x * sn + y * cs, -GZ - (1 - q) * .6 * Math.sin(ix / NX * Math.PI));
+  }
+  pos.needsUpdate = true;
+  c.rect = g;
+}
+
+/* ---------- kinetic font motion ---------- */
+function splitChars(el) {
+  const text = el.textContent;
+  el.innerHTML = '';
+  const list = [];
+  for (let i = 0; i < text.length; i++) {
+    const ch = text[i];
+    const s = document.createElement('span');
+    s.className = 'char';
+    if (ch === ' ') {
+      s.innerHTML = '&nbsp;';
+      s.style.width = '0.3em';
+    } else {
+      s.textContent = ch;
+    }
+    el.appendChild(s);
+    list.push(s);
+  }
+  return list;
+}
+
+const l1El = $('l1-inner') || $('l1').querySelector('span');
+const l2El = $('l2-inner') || $('l2').querySelector('span');
+const chars1 = splitChars(l1El);
+const chars2 = splitChars(l2El);
+
+let introStart = performance.now();
+let rippleActive1 = false;
+let rippleActive2 = false;
+
+function triggerRipple(chars, isL2 = false) {
+  if (isL2) rippleActive2 = true; else rippleActive1 = true;
+  chars.forEach((c, idx) => {
+    const delay = idx * 45;
+    setTimeout(() => {
+      c.style.transition = 'filter 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s cubic-bezier(0.16, 1, 0.3, 1)';
+      c.style.filter = 'blur(12px)';
+      c.style.transform = `translate3d(0, ${isL2 ? 22 : -22}px, 0)`;
+      setTimeout(() => {
+        c.style.filter = 'none';
+        c.style.transform = 'translate3d(0, 0, 0)';
+        setTimeout(() => {
+          c.style.transition = '';
+          if (idx === chars.length - 1) {
+            if (isL2) rippleActive2 = false; else rippleActive1 = false;
+          }
+        }, 300);
+      }, 150);
+    }, delay);
+  });
+}
+
+$('l1').addEventListener('pointerenter', () => triggerRipple(chars1, false));
+$('l2').addEventListener('pointerenter', () => triggerRipple(chars2, true));
+$('l1').addEventListener('click', () => { introStart = performance.now(); });
+$('l2').addEventListener('click', () => { introStart = performance.now(); });
+
+const RIB_A = .14, RIB_B = .63;
+function setVideos(fn) { cards.forEach(c => fn(c)); }
+function render() {
+  const pp = p;
+  const now = performance.now();
+  const introElapsed = now - introStart;
+  const speed = Math.abs(target - p);
+  const velBlur = clamp(speed * 95, 0, 16);
+  const velTilt = clamp((target - p) * 90, -12, 12);
+
+  // Vertical up-and-down motion ("উপর নিচে মুভিং")
+  // Line 1 (SHAHRIAR'S) moves from bottom to top as you scroll
+  // Line 2 (CREATION) moves from top to bottom as you scroll
+  // They cross and align near pp = 0.24 in the center
+  const runY1 = mix(45, -55, span(pp, 0, .58));
+  const runY2 = mix(-45, 55, span(pp, 0, .58));
+
+  // Subtle floating oscillation while in view
+  const floatWave = 1 - span(pp, 0.52, 0.65);
+  const floatY1 = Math.sin(now * 0.002) * 10 * floatWave;
+  const floatY2 = -Math.sin(now * 0.002 + 0.6) * 10 * floatWave;
+
+  // Subtle horizontal drift
+  const runX1 = mix(-3, 3, span(pp, 0, .58));
+  const runX2 = mix(3, -3, span(pp, 0, .58));
+
+  $('l1').style.transform = `translate3d(${runX1}vw,${(runY1 + floatY1 * 0.1).toFixed(2)}vh,0)`;
+  $('l2').style.transform = `translate3d(${runX2}vw,${(runY2 + floatY2 * 0.1).toFixed(2)}vh,0)`;
+
+  // Vertical character kinetic motion (staggered blur reveal and vertical velocity motion blur)
+  if (!rippleActive1) {
+    chars1.forEach((c, i) => {
+      const stagger = i * 65;
+      const t = clamp((introElapsed - stagger) / 600, 0, 1);
+      const easeT = out(t);
+      const entryBlur = (1 - easeT) * 18;
+      const b = Math.max(velBlur, entryBlur);
+      const entryOffsetY = (1 - easeT) * 36;
+      const dynamicOffsetY = (i - chars1.length / 2) * speed * 20;
+
+      c.style.filter = b > 0.15 ? `blur(${b.toFixed(2)}px)` : 'none';
+      c.style.transform = `translate3d(0,${(entryOffsetY + dynamicOffsetY).toFixed(1)}px,0) skewY(${velTilt.toFixed(1)}deg)`;
+      c.style.opacity = Math.max(0.04, easeT);
+    });
+  }
+
+  if (!rippleActive2) {
+    chars2.forEach((c, i) => {
+      const stagger = i * 75;
+      const t = clamp((introElapsed - stagger - 120) / 600, 0, 1);
+      const easeT = out(t);
+      const entryBlur = (1 - easeT) * 18;
+      const b = Math.max(velBlur, entryBlur);
+      const entryOffsetY = -(1 - easeT) * 36;
+      const dynamicOffsetY = -(i - chars2.length / 2) * speed * 20;
+
+      c.style.filter = b > 0.15 ? `blur(${b.toFixed(2)}px)` : 'none';
+      c.style.transform = `translate3d(0,${(entryOffsetY + dynamicOffsetY).toFixed(1)}px,0) skewY(${-velTilt.toFixed(1)}deg)`;
+      c.style.opacity = Math.max(0.04, easeT);
+    });
+  }
+
+  const intro = 1 - span(pp, 0, .05);
+  const glowEl = $('glow');
+  if (glowEl) glowEl.style.opacity = intro;
+
+  // Center Hero circular portrait: smooth dissolve and lift on scroll
+  const heroEl = $('center-hero');
+  if (heroEl) {
+    const heroProgress = span(pp, 0.0, 0.28);
+    const heroFade = Math.max(0, 1 - heroProgress);
+    const liftY = heroProgress * 48;
+    const scale = 1 - heroProgress * 0.12;
+    heroEl.style.opacity = (heroFade ** 1.5).toFixed(3);
+    heroEl.style.transform = `translate(-50%, calc(-50% - ${liftY.toFixed(1)}px)) scale(${scale.toFixed(3)})`;
+    heroEl.style.filter = heroProgress > 0.02 ? `blur(${(heroProgress * 10).toFixed(1)}px)` : 'none';
+    heroEl.style.pointerEvents = heroFade > 0.4 ? 'auto' : 'none';
+  }
+
+  // 3D Floor Grid (Video 3 style): smooth fade-in as cards enter 3D gallery
+  floorGrid.material.opacity = span(pp, 0.46, 0.62) * 0.42;
+
+  // Carousel angle from scroll + horizontal drag
+  const scrollAngle = span(pp, 0.58, 1.0) * ((cards.length - 1) * CARO_STEP);
+  const totalCaroAngle = scrollAngle + dragAngle;
+
+  // Cards motion: Ribbon fly-through (Video 1) -> 3D Curved Cylindrical Carousel (Video 3)
+  const pr = span(pp, RIB_A, 0.58);
+  const head = mix(0, PATH_L + cards.length * STEP, pr);
+  const end = PATH_L - CARD_W;
+
+  for (const c of cards) {
+    const s = head - c.i * STEP;
+    const st = mix(0.48, 0.60, c.i / (cards.length - 1));
+    const q = out(span(pp, st, st + 0.12));
+
+    if (q <= 0.001) {
+      // Phase 1 (Video 1): Ribbon trajectory through text and out to the right
+      c.mesh.visible = s > CARD_W && s < end;
+      if (c.mesh.visible) poseRibbon(c, head);
+    } else if (q >= 0.999) {
+      // Phase 2 (Video 3): 3D Curved Cylindrical Carousel
+      c.mesh.visible = true;
+      poseCarousel(c, totalCaroAngle);
+    } else {
+      // Smooth morphing transition from ribbon exit to carousel slot
+      c.mesh.visible = true;
+      poseRibbon(c, Math.min(head, end));
+      const ribPositions = c.geo.attributes.position.array.slice();
+      poseCarousel(c, totalCaroAngle);
+      const caroPositions = c.geo.attributes.position.array;
+      const pos = c.geo.attributes.position;
+      for (let k = 0; k < ribPositions.length; k += 3) {
+        pos.array[k + 0] = mix(ribPositions[k + 0], caroPositions[k + 0], q);
+        pos.array[k + 1] = mix(ribPositions[k + 1], caroPositions[k + 1], q);
+        pos.array[k + 2] = mix(ribPositions[k + 2], caroPositions[k + 2], q);
+      }
+      pos.needsUpdate = true;
+    }
+  }
+
+  // Video 3 style floating project tags
+  const tagsVisible = pp > 0.52;
+  cards.forEach((c, idx) => {
+    const tagEl = tagEls[idx];
+    if (!tagEl) return;
+    if (!tagsVisible || !c.mesh.visible || !c.caroCenter) {
+      tagEl.style.opacity = '0';
+      return;
+    }
+    const tv = c.caroCenter.clone().project(camera);
+    if (tv.z > 0.98 || tv.x < -1.15 || tv.x > 1.15) {
+      tagEl.style.opacity = '0';
+      return;
+    }
+    const sx = (tv.x * 0.5 + 0.5) * W;
+    const sy = (-tv.y * 0.5 + 0.5) * H;
+    const distCenter = Math.abs(tv.x);
+    const alpha = Math.max(0, 1 - distCenter * 1.5) * span(pp, 0.56, 0.68);
+    tagEl.style.left = `${sx}px`;
+    tagEl.style.top = `${sy}px`;
+    tagEl.style.opacity = alpha.toFixed(3);
+  });
+
+  // Dynamic bottom status
+  if (pp > 0.55) {
+    const normIdx = Math.round(span(pp, 0.58, 1.0) * (WORK.length - 1));
+    const activeIdx = clamp(normIdx, 0, WORK.length - 1);
+    const num = String(activeIdx + 1).padStart(2, '0');
+    $('bot-metric').textContent = num;
+    $('bot-sub').textContent = WORK[activeIdx][0];
+  } else {
+    $('bot-metric').textContent = '08';
+    $('bot-sub').textContent = 'Interactive 3D Portfolio';
+  }
+
+  renderer.render(scene, camera);
+}
+
+/* ---------- hover ---------- */
+const nameEl = $('name');
+$('stage').addEventListener('pointermove', e => {
+  let hit = null;
+  if (p > .86) {
+    const nx = (e.clientX / W - .5), ny = (.5 - e.clientY / H);
+    for (const c of cards) {
+      const g = c.rect;
+      if (!g) continue;
+      const x = nx * g.vw, y = ny * g.vh;
+      if (Math.abs(x - g.x) < g.w / 2 && Math.abs(y - g.y) < g.h / 2) hit = c;
+    }
+  }
+  nameEl.style.opacity = hit ? 1 : 0;
+  if (hit) { nameEl.textContent = hit.title; nameEl.style.transform = `translate(${e.clientX + 14}px,${e.clientY + 16}px)`; }
+});
+
+/* ---------- loop ---------- */
+function loop() {
+  if (!frozen) {
+    p += (target - p) * .09;
+    if (Math.abs(target - p) < .00005) p = target;
+
+    // Carousel horizontal momentum damping
+    if (!isDragging && Math.abs(dragVelocity) > 0.00001) {
+      dragAngle += dragVelocity;
+      dragVelocity *= 0.92;
+    }
+
+    for (const c of cards) {
+      if (c.mesh.visible && c.v.paused) c.v.play().catch(() => {});
+      else if (!c.mesh.visible && !c.v.paused) c.v.pause();
+    }
+    render();
+  }
+  requestAnimationFrame(loop);
+}
+loop();
+    </script>
+  </body>
+</html>
